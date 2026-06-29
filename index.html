@@ -1,136 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie Taste Lab</title>
-  <style>
-    :root {
-      --bg: #0a0a0f;
-      --panel: #14141c;
-      --ink: #f4f4f8;
-      --muted: #8a8a9a;
-      --accent: #7c5cff;
-      --accent2: #ff5c8a;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(1200px 600px at 70% -10%, rgba(124,92,255,0.18), transparent),
-        radial-gradient(900px 500px at 10% 110%, rgba(255,92,138,0.12), transparent),
-        var(--bg);
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px;
-    }
-    .wrap { width: 100%; max-width: 640px; }
-    .badge {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(124,92,255,0.4);
-      border-radius: 999px;
-      padding: 6px 14px;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: clamp(34px, 7vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-    h1 .grad {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .sub { color: var(--muted); font-size: 18px; line-height: 1.5; margin-bottom: 36px; }
-    .panel {
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 18px;
-      padding: 28px;
-    }
-    .panel h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 22px; }
-    .axis { margin-bottom: 22px; }
-    .axis:last-of-type { margin-bottom: 0; }
-    .axis-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-    input[type=range] {
-      -webkit-appearance: none; appearance: none;
-      width: 100%; height: 4px; border-radius: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      outline: none;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none; appearance: none;
-      width: 20px; height: 20px; border-radius: 50%;
-      background: #fff; cursor: pointer; border: 3px solid var(--accent);
-    }
-    .verdict {
-      margin-top: 26px; padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      font-size: 15px; color: var(--muted);
-    }
-    .verdict strong { color: var(--ink); font-weight: 600; }
-    .foot { margin-top: 28px; font-size: 13px; color: var(--muted); text-align: center; }
-    .foot code { color: var(--accent); }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <span class="badge">Private · In the lab</span>
-    <h1>Decoding your <span class="grad">cinematic DNA</span>.</h1>
-    <p class="sub">Not "what genres do you like?" — but how you actually feel about a film's pacing, tone, and scale. Drag the dials and watch your taste take shape.</p>
-
-    <div class="panel">
-      <h2>Your taste, three dials</h2>
-
-      <div class="axis">
-        <div class="axis-labels"><span>Kinetic</span><span>Methodical</span></div>
-        <input type="range" min="0" max="100" value="50" id="pacing" />
-      </div>
-      <div class="axis">
-        <div class="axis-labels"><span>Cynical</span><span>Earnest</span></div>
-        <input type="range" min="0" max="100" value="50" id="tone" />
-      </div>
-      <div class="axis">
-        <div class="axis-labels"><span>Intimate</span><span>Opulent</span></div>
-        <input type="range" min="0" max="100" value="50" id="scale" />
-      </div>
-
-      <div class="verdict" id="verdict">Reading your signal…</div>
-    </div>
-
-    <p class="foot">Movie Taste Lab — warm-up build · live via GitHub → <code>Cloudflare Pages</code></p>
-  </div>
-
-  <script>
-    const dials = ['pacing', 'tone', 'scale'].map(id => document.getElementById(id));
-    const verdict = document.getElementById('verdict');
-
-    function word(v, lo, hi, mid) {
-      if (v < 38) return lo;
-      if (v > 62) return hi;
-      return mid;
-    }
-
-    function update() {
-      const [p, t, s] = dials.map(d => +d.value);
-      const pace = word(p, 'fast & restless', 'slow & deliberate', 'balanced');
-      const tone = word(t, 'dark & sharp', 'warm & sincere', 'even-handed');
-      const scale = word(s, 'small & personal', 'vast & spectacle', 'mid-scale');
-      verdict.innerHTML = `You lean toward stories that are <strong>${pace}</strong>, <strong>${tone}</strong>, and <strong>${scale}</strong>.`;
-    }
-
-    dials.forEach(d => d.addEventListener('input', update));
-    update();
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Taste Lab — The Near-Twin Cinema Engine</title>
+    <meta name="description" content="Discover your true cinematic profile through delta analysis between near-twin films." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
